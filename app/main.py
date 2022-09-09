@@ -130,11 +130,9 @@ def coletarDados():
                 "username": username,
                 "passoword": passoword
             }
-            if banco.compararDados(cpf=user['cpf'], username=user['username']):
-                banco.cadastraruser(user)
-            else:
-                print("Cadastre novamente")
+            banco.cadastraruser(user)
             break
+            
         elif confirmar.lower() == 'n':
             break
         else:
