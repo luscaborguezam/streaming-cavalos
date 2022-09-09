@@ -1,13 +1,13 @@
 import sqlite3
 
-def cadastrar(dados_user=dict()):
+def cadastrar(dados_user=''):
     """
     > Função que cadastra usuário no banco dedados
     :param dados_user: Dicionário com dados do cliente
     """
     con = sqlite3.connect('banco\streaminghorse.db')
     cur = con.cursor()
-
+    print(dados_user)
     try:
         cur.execute('CREATE TABLE cliente ('
                     'id INTEGER PRIMARY KEY AUTOINCREMENT,'
@@ -51,11 +51,11 @@ def cadastrar(dados_user=dict()):
                 )
 
     # salvar a conexão
-    con().commit()
+    con.commit()
     print("Cadastrado com sucesso!!!")
 
     # fechando a conexão
-    con().close()
+    con.close()
 
 
 def consultarCredenciais(username='', passoword=''):

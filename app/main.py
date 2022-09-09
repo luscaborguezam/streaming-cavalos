@@ -130,9 +130,8 @@ def coletarDados():
                 "username": username,
                 "passoword": passoword
             }
-            banco.cadastraruser(user)
+            banco.cadastrar(user)
             break
-            
         elif confirmar.lower() == 'n':
             break
         else:

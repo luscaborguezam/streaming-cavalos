@@ -92,7 +92,7 @@ class CheckData:
                 while True:
                     numeroCasa = input("Número da casa: ").strip()
                     if numeroCasa.isnumeric():
-                        endereco['numero'] = numeroCasa
+                        endereco['numero'] = int(numeroCasa)
                         break
                     else:
                         print(f"{numeroCasa} não é numérico ou valor inteiro")
