@@ -18,8 +18,7 @@ import re
 
 def acessar():
     """
-    >Função que mostra o menu e retorna a opção desejada
-    :return: opcao
+    >Função que mostra o menu e navega de acordo com a opcao escolhida
     """
 
 
@@ -41,6 +40,7 @@ def acessar():
 
 
 def login():
+
     condicao = True
     while condicao:
         username = input("Username: ").strip()
@@ -52,6 +52,8 @@ def login():
             op = input("Voltar ao menu? [S/N]")
             if op.lower() == 's':
                 break
+
+
 def index():
     while True:
         servicos = ['filmes', 'séries', 'streamins', 'Log out']
@@ -67,7 +69,9 @@ def index():
 
 
 def coletarDados():
-
+    """
+    Função que coleta os dados e verifica apartir de outras funçoes
+    """
     #Recebendo nome
     while True:
         print(f"{'Cadastro':-^30}")

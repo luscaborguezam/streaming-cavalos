@@ -46,7 +46,7 @@ class CheckData:
 
     def validarCPF(self='', cpf=''):
         """
-        Função que verifica cpf
+        Função que verifica cpf válido para cadastro
         :param cpf: cpf
         :return: True or False
         """
@@ -107,7 +107,7 @@ class CheckData:
 
     def validarCredenciais(self='', username='', passsoword=''):
         """
-        Função que valida senha e nome de usuário
+        Função que valida senha e nome de usuário para cadastro
         :param username: nome de usuário
         :param passsoword: senha
         :return: False or True

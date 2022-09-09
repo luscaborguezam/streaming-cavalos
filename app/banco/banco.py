@@ -59,6 +59,12 @@ def cadastrar(dados_user=dict()):
 
 
 def consultarCredenciais(username='', passoword=''):
+    """
+    Função que compara credenciais cadastradas com as inseridas
+    :param username: nome de usuário
+    :param passoword: senha
+    :return: True
+    """
     try:
         con = sqlite3.connect('banco\streaminghorse.db')
         cur = con.cursor()
@@ -78,27 +84,12 @@ def consultarCredenciais(username='', passoword=''):
         con().close()
 
 
-def compararDados(cpf='', username=''):
-    con = sqlite3.connect('banco\streaminghorse.db')
-    cur = con.cursor()
-    cur.execute("SELECT cpf, username FROM cliente")
-    resultado = cur.fetchall()
-    for linha in resultado:
-        dados=list()
-        for item in linha:
-            dados.append(item)
-        if dados[0] == cpf:
-            print("CPF já cadastrado")
-            return False
-        elif dados[1] == username:
-            print("Username existente, tente outro.")
-            return False
-        else:
-            return True
-    con().close()
-
-
 def buscarCampoDaTabela(campo=''):
+    """
+    Função que retorna uma lista dos dados cadasrados em uma coluna especifica da tabela cliente
+    :param campo: nome da coluna de uma tabela
+    :return: listaResultados
+    """
     con = sqlite3.connect("banco\streaminghorse.db")
     cur = con.cursor()
 
@@ -110,5 +101,3 @@ def buscarCampoDaTabela(campo=''):
     # print(listaResultado)
     return listaResultado
     con.close()
-
-buscarCampoDaTabela('cpf')
