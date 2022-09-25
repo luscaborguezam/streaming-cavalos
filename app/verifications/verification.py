@@ -27,8 +27,11 @@ class CheckData:
 
         from datetime import date
 
-        if day.isnumeric() and month.isnumeric() and year.isnumeric() and int(day) in range(1, 30) and int(
-                month) in range(1, 12):
+        anoatual = date.today()
+        anoatual = str(anoatual)
+        anoatual = anoatual[:4]
+
+        if day.isnumeric() and month.isnumeric() and year.isnumeric() and int(day) in range(1, 32) and int(month) in range(1, 13) and int(year) <= int(anoatual):
             dataDeNascimento = date(day=int(day), month=int(month), year=int(year))
             dataAtual = date.today()
             idade = dataAtual.year - dataDeNascimento.year
@@ -60,6 +63,7 @@ class CheckData:
                 if cpf == item:
                     print("Este CPF já está cadastrado")
                     return False
+            print("CPF Válido")
             return True
         else:
             print("CPF inválido")

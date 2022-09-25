@@ -1,5 +1,41 @@
 import sqlite3
 
+
+def verificarBD():
+    """
+    Função que cria o banco de dados caso não exista
+    :return: sem retorno
+    """
+    import os
+    arquivo = 'banco\streaminghorse.db'
+    if os.path.exists(arquivo):
+        print("Carregando Banco de dados")
+    else:
+        con = sqlite3.connect('banco\streaminghorse.db')
+        cur = con.cursor()
+        try:
+            cur.execute('CREATE TABLE cliente ('
+                        'id INTEGER PRIMARY KEY AUTOINCREMENT,'
+                        'nome TEXT, '
+                        'sobrenome TEXT, '
+                        'data_nascimento TEXT, '
+                        'cpf TEXT, '
+                        'logradouro TEXT, '
+                        'bairro TEXT, '
+                        'localidade TEXT, '
+                        'numero INTEGER, '
+                        'username TEXT, '
+                        'passoword TEXT);')
+        except:
+            pass
+
+            # salvar a conexão
+            con.commit()
+            print("Banco criado com sucesso!!!")
+
+            # fechando a conexão
+            con.close()
+
 def cadastrar(dados_user=''):
     """
     > Função que cadastra usuário no banco dedados
@@ -8,21 +44,6 @@ def cadastrar(dados_user=''):
     con = sqlite3.connect('banco\streaminghorse.db')
     cur = con.cursor()
     print(dados_user)
-    try:
-        cur.execute('CREATE TABLE cliente ('
-                    'id INTEGER PRIMARY KEY AUTOINCREMENT,'
-                    'nome TEXT, '
-                    'sobrenome TEXT, '
-                    'data_nascimento TEXT, '
-                    'cpf TEXT, '
-                    'logradouro TEXT, '
-                    'bairro TEXT, '
-                    'localidade TEXT, '
-                    'numero INTEGER, '
-                    'username TEXT, '
-                    'passoword TEXT);')
-    except:
-        pass
 
     #inserindo valores
 

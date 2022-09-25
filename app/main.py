@@ -15,13 +15,14 @@ from verifications.verification import CheckData
 from banco import banco
 from datetime import date
 import re
+from hashlib import sha256
 
 def acessar():
     """
     >Função que mostra o menu e navega de acordo com a opcao escolhida
     """
 
-
+    banco.verificarBD()
     print(f"{'Straming Horse':-^30}")
     menu = ["Login", "Register", "Exit"]
     for i, op in enumerate(menu):
@@ -44,7 +45,7 @@ def login():
     condicao = True
     while condicao:
         username = input("Username: ").strip()
-        passoword = input("Passoword:").strip()
+        passoword = str(sha256(input("Passoword: ").strip().encode('utf-8')).hexdigest())
         if banco.consultarCredenciais(username=username, passoword=passoword):
            condicao = index()
         else:
@@ -86,6 +87,7 @@ def coletarDados():
         dia = input("Dia: ").strip()
         mes = input("Mes: ").strip()
         ano = input("Ano: ").strip()
+
         if CheckData.validarIdade(day=dia, month=mes, year=ano):
             dataNascimento = date(day=int(dia), month=int(mes), year=int(ano))
             break
@@ -94,7 +96,8 @@ def coletarDados():
     #Recebendo CPF
     while True:
         cpf = input("CPF: ").strip()
-        if CheckData.validarCPF(cpf=cpf):
+        condicao = CheckData.validarCPF(cpf=cpf)
+        if condicao:
             break
 
     #Recebendo CEP
@@ -110,7 +113,7 @@ def coletarDados():
     #Recebendo email e senha
     while True:
         username = input("Username: ").strip()
-        passoword = input("Passoword:").strip()
+        passoword = str(sha256(input("Passoword: ").strip().encode('utf-8')).hexdigest())
         if CheckData.validarCredenciais(username=username, passsoword=passoword):
             break
 
