@@ -43,7 +43,6 @@ def cadastrar(dados_user=''):
     """
     con = sqlite3.connect('banco\streaminghorse.db')
     cur = con.cursor()
-    print(dados_user)
 
     #inserindo valores
 
